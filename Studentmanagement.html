@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <link rel="stylesheet" href="System.css">
+</head>
+<body>
+
+<div class="layout">
+
+    <aside class="sidebar">
+        <h2>🎓 Student<span>Hub</span></h2>
+
+        <nav>
+            <a href="#dashboard" class="active">📊 Dashboard</a>
+            <a href="#studentForm">➕ Add Student</a>
+            <a href="#studentSection">👨‍🎓 All Students</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <p>Student Management</p>
+            <small>Version 1.0</small>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <h1>Student Dashboard</h1>
+                <p>Manage your student records in one place.</p>
+            </div>
+
+            <button id="themeBtn" class="theme-btn">🌙</button>
+        </header>
+
+        <section id="dashboard" class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-icon purple">👨‍🎓</div>
+                <p>Total Students</p>
+                <h2 id="totalStudents">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon green">📚</div>
+                <p>Courses</p>
+                <h2 id="totalCourses">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon orange">🏢</div>
+                <p>Departments</p>
+                <h2 id="totalDepartments">0</h2>
+            </div>
+
+        </section>
+
+        <section id="studentForm" class="panel">
+            <div class="panel-heading">
+                <div>
+                    <h2 id="formTitle">Add New Student</h2>
+                    <p>Enter the student's information below.</p>
+                </div>
+            </div>
+
+            <form id="studentFormElement">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label for="studentName">Full Name *</label>
+                        <input type="text" id="studentName"
+                               placeholder="Enter full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="studentEmail">Email *</label>
+                        <input type="email" id="studentEmail"
+                               placeholder="student@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="studentPhone">Phone Number *</label>
+                        <input type="tel" id="studentPhone"
+                               placeholder="10-digit mobile number"
+                               pattern="[0-9]{10}"
+                               maxlength="10" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="studentGender">Gender *</label>
+                        <select id="studentGender" required>
+                            <option value="">Select Gender</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="studentCourse">Course *</label>
+                        <select id="studentCourse" required>
+                            <option value="">Select Course</option>
+                            <option>B.Sc</option>
+                            <option>B.Com</option>
+                            <option>B.A.</option>
+                            <option>B.Tech</option>
+                            <option>BCA</option>
+                            <option>MCA</option>
+                            <option>M.Sc</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="studentDepartment">Department *</label>
+                        <select id="studentDepartment" required>
+                            <option value="">Select Department</option>
+                            <option>Computer Science</option>
+                            <option>Information Technology</option>
+                            <option>Commerce</option>
+                            <option>Science</option>
+                            <option>Arts</option>
+                            <option>Management</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="studentYear">Academic Year *</label>
+                        <select id="studentYear" required>
+                            <option value="">Select Year</option>
+                            <option>1st Year</option>
+                            <option>2nd Year</option>
+                            <option>3rd Year</option>
+                            <option>4th Year</option>
+                            <option>Graduate</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="studentStatus">Status *</label>
+                        <select id="studentStatus" required>
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" id="cancelEdit" class="secondary-btn" hidden>
+                        Cancel Edit
+                    </button>
+
+                    <button type="submit" id="submitBtn" class="primary-btn">
+                        ➕ Add Student
+                    </button>
+                </div>
+
+            </form>
+        </section>
+
+        <section id="studentSection" class="panel">
+
+            <div class="panel-heading students-heading">
+                <div>
+                    <h2>All Students</h2>
+                    <p>Search, edit or delete student records.</p>
+                </div>
+
+                <button id="exportBtn" class="export-btn">
+                    📥 Export CSV
+                </button>
+            </div>
+
+            <div class="table-controls">
+                <input type="search" id="searchInput"
+                       placeholder="🔍 Search by name, email or ID...">
+
+                <select id="statusFilter">
+                    <option value="All">All Status</option>
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                </select>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Course</th>
+                            <th>Department</th>
+                            <th>Year</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="studentTableBody"></tbody>
+                </table>
+            </div>
+
+            <p id="emptyMessage" class="empty-message">
+                No students found. Add your first student!
+            </p>
+
+            <div class="table-footer">
+                <span id="showingCount">Showing 0 students</span>
+            </div>
+
+        </section>
+
+        <footer>
+            <p>© 2026 StudentHub | Student Management System</p>
+        </footer>
+
+    </main>
+
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="sms.js"></script>
+</body>
+</html>
